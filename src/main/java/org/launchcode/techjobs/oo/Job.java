@@ -23,7 +23,7 @@ public class Job {
         }
 
 
-    public Job() {String name, Employer employer, Location location, PositionType positionType, CoreCompetency coreCompetency){
+    public Job(String name, Employer employer, Location location, PositionType positionType, CoreCompetency coreCompetency){
             this ();
             this.name = name;
             this.employer = employer;
@@ -34,7 +34,7 @@ public class Job {
 
 
 
-        }
+
 
     // TODO: Add custom equals and hashCode methods. Consider two Job objects "equal" when their id fields
     //  match.
@@ -44,11 +44,11 @@ public class Job {
             if (this ==o) return true;
             if (!(o instanceof Job)) return false;
             Job job = (Job) o;
-            return id ==job.id;
+            return getId() ==job.getId();
         }
 
         @Override
-        public int hashCode() { return Objects.hash(id);
+        public int hashCode() { return Objects.hash(getId());}
 
     // TODO: Add getters for each field EXCEPT nextId. Add setters for each field EXCEPT nextID
     //  and id.
@@ -63,7 +63,7 @@ public class Job {
             }
 
             public Employer getEmployer() {
-                return employer;
+                    return employer;
             }
 
             public void setEmployer(Employer employer) {
@@ -98,6 +98,32 @@ public class Job {
                 return id;
             }
 
+
+    @Override
+    public String toString() {
+        if (name.isEmpty()) {
+            name= "Data not available";
+        }
+        if (employer.getValue().isEmpty()) {
+            employer.setValue("Data not available");
+        }
+        if (location.getValue().isEmpty()) {
+            location.setValue("Data not available");
+        }
+        if (positionType.getValue().isEmpty()) {
+            positionType.setValue("Data not available");
+        }
+        if (coreCompetency.getValue().isEmpty()) {
+            coreCompetency.setValue("Data not available");
+        }
+        return "\n" + "ID: " + id + "\n"+
+                "\nName: " + name + "\n"+
+                "\nEmployer: " + employer + "\n"+
+                "\nLocation: " + location + "\n"+
+                "\nPosition Type: " + positionType + "\n"+
+                "\nCore Competency: " + coreCompetency + "\n";
+
+    }
 }
 
 
